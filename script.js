@@ -88,11 +88,20 @@ let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
 
+// código omitido
+
 function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+     caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
+
+// código omitido
 function mostraAlternativas(){
     for(const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
@@ -108,7 +117,16 @@ function respostaSelecionada(opcaoSelecionada){
     atual++;
     mostraPergunta();
 }
+
+// código omitido
+
+function mostraResultado() {
+    caixaPerguntas.textContent = "Em 2049...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
+}
+
+// código omitido
+
+
 mostraPergunta();
-
-
-
